@@ -18,4 +18,15 @@ const createUser = (req, res)=>{
     res.status(201).json(users);
 };
 
-module.exports = {getAllUser, createUser};
+//update users
+const updateUser = (req, res)=>{
+    const userid = req.params.id;
+    const {username, email} = req.body;
+    users.filter((user) => user.id == userid).map((selecteduser) => {
+      selecteduser.username = username;
+      selecteduser.email = email;
+    } );
+    res.status(201).json(users);
+};
+
+module.exports = {getAllUser, createUser,updateUser};
